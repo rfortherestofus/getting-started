@@ -7,6 +7,36 @@ body {
   
 }
 
+.remark-slide-content {
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.remark-slide-content h1{font-size:55px}
+.remark-slide-content h2{font-size:50px}
+.remark-slide-content h3{font-size:40px}
+
+
+
+.large { 
+  font-size: 130% 
+}
+
+.small { 
+  font-size: 70% 
+}
+
+a , a > code {
+  color: #6cabdd;
+  text-decoration: underline;
+  
+}
+
+.hljs-github .hljs-string, .hljs-github .hljs-doctag {
+    color: #19751E
+}
+
+
 
 .remark-slide-content {
     background-image: url("https://github.com/rfortherestofus/course-assets/raw/master/images/blob.svg");
@@ -25,7 +55,7 @@ body {
   color: #f3f3f3;
 }
 
-.inverse h3 {
+.title-slide h3 {
   font-weight: 400;
 }
 
@@ -61,9 +91,13 @@ body {
 
 /* Footer */
 
+.remark-slide-number {
+  font-size: 80%;
+}
+
 div.dk-footer {
     background-color: #ffffff;
-    border-top: 1px solid #5f749e;
+    /* border-top: 1px solid #5f749e; */
     position: absolute;
     bottom: 0px;
     left: 70px;
@@ -81,6 +115,8 @@ div.dk-footer span {
 div.dk-footer a {
     color: #404e6b;
     opacity: 0.5;
+    text-decoration: none;
+    font-size: 80%;
 }
 
 .inverse div.dk-footer {
@@ -99,4 +135,5 @@ div.dk-footer a {
 .inverse div.dk-footer a {
     color: #f3f3f3;
     opacity: 0.5;
+    text-decoration: none;
 }

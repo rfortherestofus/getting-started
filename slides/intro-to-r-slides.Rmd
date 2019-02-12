@@ -18,7 +18,7 @@ output:
 
 
 
-```{r packages, include=FALSE}
+```{r packages, include = F, eval = T}
 
 
 library(tidyverse)
@@ -37,19 +37,28 @@ library(kableExtra)
 
 class: inverse, middle, center
 
-# Intro to R/RStudio
+# Installation
+
+---
+
+## R
+
+The first thing you need to do is download the R software. Go to the [Comprehensive R Archive Network (aka “CRAN”) website](https://cran.cnr.berkeley.edu/) and download the software for your operating system (Windows, Mac, or Linux).
+
+![](images/download-r.png)
+
 
 ---
 
 
-## Working Directly in R
+### Working Directly in R
 
 ![](images/r-console.png)
 
 
 ---
 
-## Working Directly in R
+### Working Directly in R
 
 1. Enter: 2 + 2
 
@@ -61,71 +70,56 @@ class: inverse, middle, center
 
 class:inverse
 
-## Your Turn
+### Your Turn
 
-Now you try it out! 
+1. Download and Install R
 
-1. Open up R
+1. Open R
 
-2. Use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected.
+1. Use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
 
 
 ---
 
 
-## R and RStudio
+## RStudio
 
 --
 
-![](../images/engine-dashboard.png)
+.center[
+![](images/engine-dashboard.png)
 
-<p class="smaller" align="center">Courtesy <a href="http://moderndive.com/2-getting-started.html#what-are-r-and-rstudio">Modern Dive</a></p>
-
----
-
-<br>
-
-![](../images/rstudio-panes.png)
-
-
-
+.small[Courtesy [Modern Dive](http://moderndive.com/2-getting-started.html#what-are-r-and-rstudio)]
+]
 
 ---
 
-## Tour of RStudio
+### Tour of RStudio
 
-Working within the **Console/Terminal** pane:
-
-1. Enter: 2 + 2
-
-2. Return
-
-3. View result
+![](images/rstudio-panes.png)
 
 
---
-
-This is the same as working directly in R.
 
 ---
-
-
 
 class:inverse
 
-## Your Turn
+### Your Turn
 
-Now you try it out! 
+1. Download and Install RStudio
 
-1. Open up RStudio
+1. Open RStudio
 
-2. In the console pane, use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected.
+1. Working in the console pane, use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
+
 
 ---
 
 # Projects
 
-One of the best things about RStudio is the projects feature. It allows you to keep a collection of files all together, including: 
+--
+
+Projects allow you to keep a collection of files all together, including: 
 
 --
 
@@ -146,17 +140,39 @@ One of the best things about RStudio is the projects feature. It allows you to k
 
 ---
 
+## Sample Project
+
+![](images/rstudio-panes.png)
+
+---
+
 
 ## How to Create a Project
 
-*Note: you aren't actually doing this because we have already created a project for you, but we wanted to give you an example of what this looks like.*
 
-1. Keep all project files together
-2. File -> New Project
-3. Quit RStudio, Double-click .Rproj file to reopen project
+1. File -> New Project
+
+2. Quit RStudio, Double-click .Rproj file to reopen project
+
+---
+
+class:inverse
+
+## Your Turn
+
+1. Create a new project (doesn't matter if it's in a new or existing directory)
+
+2. Quit RStudio, double-click the .Rproj file and reopen your project
 
 
 ---
+
+# Download Course Project
+
+
+
+---
+
 
 # Two File Types
 
@@ -165,23 +181,26 @@ There are two main file types that you'll work with:
 .pull-left[
 **R scripts (.R)**
 
-Text is assumed to be executable R code unless you comment it
+Text is assumed to be executable R code unless you comment it (more on this soon)
 
 ```{r}
+
 # This is a comment
 
 data <- read_csv("data.csv")
 
 ```
-
 ]
+
+--
+
 .pull-right[
 
 **RMarkdown files (.Rmd)**
 
 Text is assumed to be text unless you put it in a code chunk (more on this soon)
 
-![](../images/code-chunk.png)
+![](images/code-chunk.png)
 
 
 
@@ -190,23 +209,27 @@ Text is assumed to be text unless you put it in a code chunk (more on this soon)
 
 ---
 
-## Scripts: Create a New File
-
-*Note: you aren't actually doing this because we have already created a project for you, but we wanted to give you an example of what this looks like.*
+## R Scripts
 
 
-Create new script file: File -> New File -> R Script 
+Create new script file: File -> New File -> R Script
 
-![](../images/new-script.gif)
+![](images/new-script.gif)
 
 ---
 
 
 # How to Run Code
 
-Run the code: Control-Enter (Command-Enter on Mac) keystrokes or Run button
+Run the code: control + enter on Windows,  command + enter on Mac keystrokes or use Run button
 
-![](../images/run-code.gif)
+![](images/run-code.gif)
+
+???
+
+Note that you don't have to highlight code. 
+
+You can just hit run anywhere on line to run code. 
 
 ---
 
@@ -217,7 +240,7 @@ Do them for others, and for your future self.
 ```{r eval = F}
 
 # This is a comment. 
-# You might write something like: "use the head() function to see only a few cases"
+# You might write something like: examining my dataset 
 
 head(data, n = 5)
 
@@ -234,13 +257,11 @@ They're where much of the power of R is found.
 
 --
 
+.center[
+![](images/phone-apps.png)
 
-![](../images/phone-apps.png)
-
-<p class="smaller" align="center">Courtesy <a href="http://moderndive.com/2-getting-started.html#packages">Modern Dive</a></p>
-
-
-
+.small[Courtesy [Modern Dive](http://moderndive.com/2-getting-started.html#packages)]
+]
 
 
 ---
@@ -252,17 +273,26 @@ Packages we'll use for this course:
 
 --
 
-**`tidyverse`**: It's actually several packages in one. We'll use **`readr`** to import our data. 
+.pull-left[
+[`tidyverse`](https://www.tidyverse.org/)
+
+It's actually several packages in one. 
+
+We'll use [`readr`](https://readr.tidyverse.org/) to import our data. 
+]
 
 --
 
-**`skimr`**: For easy summary statistics.
+.pull-right[
+[`skimr`](https://github.com/ropensci/skimr)
 
+Provides easy summary statistics.
+]
 
 ---
 
 
-## Install packages
+## Install Packages
 
 The syntax to install packages is as follows. 
 
@@ -271,7 +301,7 @@ install.packages("tidyverse")
 install.packages("skimr")
 ```
 
-Note that the package name must be quoted.
+The package name must be in quotes.
 
 --
 
@@ -279,7 +309,7 @@ Packages should be installed **once per computer** (i.e. once you've installed a
 
 ---
 
-## Load packages
+## Load Packages
 
 To load packages, use the following syntax:
 
@@ -304,7 +334,7 @@ class:inverse
 
 ## Your Turn
 
-1. Open up the code.R file
+1. Open up the exercises.R file
 
 --
 
@@ -323,7 +353,8 @@ Read data from a CSV file.
 
 ```{r eval = T}
 
-faketucky <- read_csv("data/faketucky.csv")
+faketucky <- read_csv(here("data", "faketucky.csv"))
+
 
 ```
 
@@ -473,7 +504,7 @@ John Chambers, quoted in [Hadley Wickham's Advanced R](http://adv-r.had.co.nz/Fu
 
 ## Objects and Functions
 
-![](../images/objects-functions.png)
+![](images/objects-functions.png)
 
 .pull-left[
 Everything that exists is an **object**
@@ -490,7 +521,7 @@ Everything that happens is a **function** call
 
 We assign the result of the **function** (`read_csv`) to the **object** (`data`)
 
-![](../images/assignment-operator.png)
+![](images/assignment-operator.png)
 
 ---
 
@@ -498,7 +529,7 @@ We assign the result of the **function** (`read_csv`) to the **object** (`data`)
 
 Data we have imported is available in the environment/history pane.
 
-![](../images/rstudio-panes.png)
+![](images/rstudio-panes.png)
 
 ---
 

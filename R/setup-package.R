@@ -1,13 +1,13 @@
 library(tidyverse)
 library(here)
 
+# This file brings in assets (data and CSS) from the course assets repo (https://github.com/rfortherestofus/course-assets).
+
 
 # Get Data ----------------------------------------------------------------
 
 download.file("https://github.com/rfortherestofus/course-assets/raw/master/data/faketucky.csv",
               destfile = here("data", "faketucky.csv"))
-
-
 
 # Get setup.Rmd -----------------------------------------------------------
 

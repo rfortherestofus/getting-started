@@ -175,6 +175,21 @@ class:inverse
 
 # Download Course Project
 
+--
+
+Enter the following into the R console.
+
+
+```r
+install.packages("usethis")
+library(usethis)
+use_course("http://bit.ly/intro-to-R")
+```
+
+???
+
+You'll now have a copy of the project created for this course that we'll use from here on out
+
 
 
 ---
@@ -340,97 +355,41 @@ class:inverse
 
 ## Your Turn
 
-1. Open up the exercises.R file
+1. Open the project you downloaded before (it should be on your desktop)
 
---
+1. Open the exercises.R file
 
-2. Install the tidyverse and skimr packages using the install.packages function.
+1. Install the tidyverse and skimr packages using the install.packages function
 
---
-
-3. Load the tidyverse and skimr packages using the library function.
+1. Load the tidyverse and skimr packages using the library function
 
 ---
 
 # Import Data
 
-Read data from a CSV file.
+Let's read data from a CSV file. 
+
+
 
 
 
 ```r
-faketucky &lt;- read_csv(here("data", "faketucky.csv"))
+faketucky &lt;- read_csv("data/faketucky.csv")
 ```
 
 We now have a data frame/tibble called `faketucky` that we can work with in R.
 
---
+
+
+???
 
 - Tibbles are ["modern data frames"](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html). The main difference for our purposes is that tibbles print much more nicely within R. 
 
 - We'll use the terms tibble and data frame interchangeably. 
 
+- For Excel files, try `read_excel` from the `readxl` package. 
 
---
-
-*For Excel files, try `read_excel` from the `readxl` package.* 
-
-*For SPSS files, try `read_sav` from the `haven` package.*
-
-
-
----
-
-## Data Types
-
-R has multiple data types: 
-
-- Logical (e.g TRUE/FALSE)
-- Integer (e.g. 2) 
-- Double/Numeric (e.g. 2.5), 
-- Character (e.g. "Male")
-- Factor (used to work with categorical variables)
-
----
-
-## Data Types
-
-You'll see the following message when you import your data, which will tell you the data types that the `read_csv` function has given to your imported data frame.
-
---
-
-```
-cols(
-  male = col_integer(),
-  race_ethnicity = col_character(),
-  frpl_ever_in_hs = col_integer(),
-  pct_absent_in_hs = col_double(),
-  avg_gpa_hs = col_double(),
-  dropout = col_integer(),
-  enroll_yr1_any = col_integer()
-)
-```
-
----
-
-## Missing Data
-
-To tell R which data is missing, simply add an argument to the `read_csv` function as follows:
-
-
-```r
-faketucky &lt;- read_csv("data/faketucky.csv",
-                     na = "999")
-```
-
---
-
-If you have more than one NA value, add it as follows. `c()` is the way you combine multiple values.
-
-```r
-faketucky &lt;- read_csv("data/faketucky.csv",
-                     na = c("999", "N/A"))
-```
+- For SPSS files, try `read_sav` from the `haven` package.
 
 
 ---
@@ -465,9 +424,9 @@ student.data
 ---
 
 
-# Directories
+## Directories
 
-If the data file is in the working directory, only need to specify its name
+If the data file is in the working directory, you only need to specify its name.
 
 
 ```r
@@ -487,6 +446,14 @@ When specifying the path name use of forward slash (“/”) not backslash (“\
 faketucky &lt;- read_csv("data/faketucky.csv")
 ```
 
+---
+class:inverse
+
+## Your Turn
+
+1. Open the exercises.R file
+
+1. Import the faketucky data into a data frame called faketucky.
 
 
 ---
@@ -525,7 +492,7 @@ Everything that happens is a **function** call
 
 ---
 
-# Assignment Operator
+## Assignment Operator
 
 We assign the result of the **function** (`read_csv`) to the **object** (`data`)
 
@@ -541,9 +508,13 @@ Data we have imported is available in the environment/history pane.
 
 ---
 
-# View Our Data
+# Examine Our Data
 
 There are many ways to look at our data. We'll talk about a few.
+
+---
+
+## `head`
 
 `head` shows us the first X rows. 
 
@@ -568,7 +539,7 @@ head(faketucky, 5)
 
 ---
 
-## View Our Data
+## `tail`
 
 `tail` shows us the last X rows. 
 
@@ -593,7 +564,7 @@ tail(faketucky, 5)
 
 ---
 
-## View Our Data
+## `View`
 
 `View` (note capital V) opens the RStudio viewer (or click on a data frame in the environment pane).
 
@@ -604,14 +575,17 @@ View(faketucky)
 
 ---
 
-## View Our Data
+## `skimr`
 
 The skimr package provides more detailed information about our data frame. It is also broken up by the type of variable.
 
 
 ```r
-skim(faketucky) 
+skim(faketucky)
 ```
+
+---
+
 
 ```
 ## Skim summary statistics
@@ -646,6 +620,107 @@ skim(faketucky)
 ##      0        1        1         1 ▃▁▁▁▁▁▁▇
 ##  27909.5  56070    83872.5  111990 ▇▇▇▇▇▇▇▇
 ```
+
+---
+
+# Import Again
+
+We need to do two things:
+
+--
+
+1. Tell R how to handle **missing data**
+
+--
+
+2. Make sure `read_csv` chooses the correct **data type** for each variable
+
+---
+
+
+## Missing Data
+
+To tell R which data is missing, simply add an argument to the `read_csv` function as follows:
+
+
+```r
+faketucky &lt;- read_csv("data/faketucky.csv",
+                     na = "No Info")
+```
+
+---
+
+## Missing Data
+
+
+```r
+skim(faketucky)
+```
+
+
+---
+
+## Data Types
+
+You'll see the following message when you import your data, which will tell you the data types that the `read_csv` function has given to your imported data frame.
+
+
+```r
+Parsed with column specification:
+cols(
+  `Student ID` = col_double(),
+  `First High School Attended` = col_character(),
+  `School District` = col_character(),
+  Male = col_double(),
+  `Race Ethnicity` = col_character(),
+  `Free and Reduced Lunch` = col_double(),
+  `Percent Absent` = col_double(),
+  GPA = col_double(),
+  `ACT Reading Score` = col_double(),
+  `ACT Math Score` = col_double(),
+  `Received High School Diploma` = col_double(),
+  `Enrolled in College` = col_double()
+)
+```
+
+---
+
+## Data Types
+
+- Logical (e.g TRUE/FALSE)
+
+--
+
+- Integer (e.g. 2) 
+
+--
+
+- Double/Numeric (e.g. 2.5)
+
+--
+
+- Character (e.g. "Male")
+
+--
+
+- Factor (used to work with categorical variables)
+
+---
+
+## Data Types
+
+
+```r
+faketucky &lt;- read_csv("../data/faketucky.csv",
+                     na = "999",
+                     col_types = list(Male = col_character(),
+                                      `Free and Reduced Lunch` = col_character()))
+
+skim(faketucky)
+```
+
+
+
 
 
 ---

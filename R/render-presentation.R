@@ -8,7 +8,7 @@ library(rmarkdown)
 
 render(input = here("slides", "slides.Rmd"), 
        output_file = "index.html",
-       output_dir = here(),
+       output_dir = here("slides"),
        clean = T)
 
 

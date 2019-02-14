@@ -1,41 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Intro to R</title>
-    <meta charset="utf-8">
-    <meta name="author" content="R for the Rest of Us" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-    <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-class: center, middle, inverse, title-slide
-
-# Intro to R
-### R for the Rest of Us
-
+---
+title: "Intro to R"
+author: "R for the Rest of Us"
+output:
+  xaringan::moon_reader:
+    df_print: paged
+    css: ["style.css", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
 ---
 
+```{r child = "setup.Rmd"}
+```
 
 
 
-
-layout: true
-  
-&lt;div class="dk-footer"&gt;
-&lt;span&gt;
-&lt;a href="https://rfortherestofus.com/" target="_blank"&gt;R for the Rest of Us
-&lt;/a&gt;
-&lt;/span&gt;
-&lt;/div&gt; 
-
----
+```{r packages, include = F, eval = T}
 
 
+library(tidyverse)
+library(skimr)
+library(janitor)
+library(DT)
+library(here)
+library(kableExtra)
+library(knitr)
 
 
+```
 
 class: center, middle, dk-section-title
 
@@ -80,7 +75,11 @@ class:inverse
 
 1. Download and Install R
 
+--
+
 1. Open R
+
+--
 
 1. Use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
 
@@ -135,7 +134,11 @@ class:inverse
 
 1. Download and Install RStudio
 
+--
+
 1. Open RStudio
+
+--
 
 1. Working in the console pane, use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
 
@@ -186,7 +189,7 @@ Projects allow you to keep a collection of files all together, including:
 ### How to Create a Project
 
 
-1. File -&gt; New Project
+1. File -> New Project
 
 --
 
@@ -199,6 +202,8 @@ class:inverse
 ### Your Turn
 
 1. Create a new project (doesn't matter if it's in a new or existing directory)
+
+--
 
 2. Quit RStudio, double-click the .Rproj file and reopen your project
 
@@ -219,8 +224,7 @@ background-image: url("images/download-course-project.jpeg")
 
 Enter the following into the RStudio console pane:
 
-
-```r
+```{r eval = F}
 install.packages("usethis")
 library(usethis)
 use_course("http://bit.ly/intro-to-R")
@@ -252,11 +256,12 @@ There are two main file types that you'll work with:
 
 Text is assumed to be executable R code unless you comment it (more on this soon)
 
+```{r}
 
-```r
 # This is a comment
 
-data &lt;- read_csv("data.csv")
+data <- read_csv("data.csv")
+
 ```
 ]
 
@@ -280,7 +285,7 @@ Text is assumed to be text unless you put it in a code chunk (more on this soon)
 ## R Scripts
 
 
-Create new script file: File -&gt; New File -&gt; R Script
+Create new script file: File -> New File -> R Script
 
 ![](images/new-script.gif)
 
@@ -305,11 +310,12 @@ You can just hit run anywhere on line to run code.
 
 Do them for others, and for your future self. 
 
+```{r eval = F}
 
-```r
 # This is a comment
 
 head(data, n = 5)
+
 ```
 
 ---
@@ -395,8 +401,7 @@ We'll use [`readr`](https://readr.tidyverse.org/) to import data.
 
 The syntax to install packages is as follows. 
 
-
-```r
+```{r eval=F}
 install.packages("tidyverse")
 install.packages("skimr")
 ```
@@ -415,8 +420,7 @@ Packages should be installed **once per computer** (i.e. once you've installed a
 
 To load packages, use the following syntax:
 
-
-```r
+```{r eval = T}
 library(tidyverse)
 library(skimr)
 ```
@@ -441,9 +445,15 @@ class:inverse
 
 1. Open the project you downloaded before (it should be on your desktop)
 
+--
+
 1. Open the exercises.R file
 
+--
+
 1. Install the tidyverse and skimr packages using the install.packages function
+
+--
 
 1. Load the tidyverse and skimr packages using the library function
 
@@ -465,11 +475,18 @@ background-image: url("images/data.jpg")
 Let's read data from a CSV file. 
 
 
+```{r eval = T, echo = F}
+
+faketucky <- read_csv(here("data", "faketucky.csv"))
 
 
+```
 
-```r
-faketucky &lt;- read_csv("data/faketucky.csv")
+```{r}
+
+faketucky <- read_csv("data/faketucky.csv")
+
+
 ```
 
 We now have a data frame/tibble called `faketucky` that we can work with in R.
@@ -526,9 +543,8 @@ student.data
 
 If the data file is in the working directory, you only need to specify its name.
 
-
-```r
-faketucky &lt;- read_csv("faketucky.csv")
+```{r}
+faketucky <- read_csv("faketucky.csv")
 ```
 
 --
@@ -539,9 +555,8 @@ If the data file is not in the working directory, you need to specify full path 
 
 When specifying the path name use of forward slash (“/”) not backslash (“\”).
 
-
-```r
-faketucky &lt;- read_csv("data/faketucky.csv")
+```{r}
+faketucky <- read_csv("data/faketucky.csv")
 ```
 
 ---
@@ -561,7 +576,11 @@ class:inverse
 
 1. Open the exercises.R file
 
+--
+
 1. Import the faketucky data into a data frame called `faketucky`.
+
+--
 
 1. Make sure you see `faketucky` in your environment/history pane.
 
@@ -579,15 +598,15 @@ background-image: url("images/function.jpg")
 
 --
 
-&gt; To understand computations in R, two slogans are helpful:
+> To understand computations in R, two slogans are helpful:
 
 --
 
-&gt; Everything that exists is an **object**, and 
+> Everything that exists is an **object**, and 
 
 --
 
-&gt; Everything that happens is a **function** call.
+> Everything that happens is a **function** call.
 
 --
 
@@ -647,29 +666,8 @@ There are many ways to look at our data. We'll talk about a few.
 ## `faketucky`
 
 If you type the name of your data frame (i.e. `faketucky`), R will output 
-
-```r
+```{r eval = T, paged.print = F}
 faketucky
-```
-
-```
-## # A tibble: 57,855 x 12
-##    student_id first_high_scho… school_district  male race_ethnicity
-##         &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;         
-##  1       1622 Jackson          Jackson             1 Multiple/Nati…
-##  2       1877 Jackson          Jackson             1 White         
-##  3       1941 Jackson          Jackson             1 White         
-##  4       3442 Jackson          Jackson             0 White         
-##  5       4623 Jackson          Jackson             1 White         
-##  6       4913 Jackson          Jackson             1 White         
-##  7       5754 Jackson          Jackson             1 White         
-##  8       6293 Jackson          Jackson             0 White         
-##  9       7010 Jackson          Jackson             1 White         
-## 10       8343 Jackson          Jackson             1 White         
-## # … with 57,845 more rows, and 7 more variables:
-## #   free_and_reduced_lunch &lt;dbl&gt;, percent_absent &lt;dbl&gt;, gpa &lt;dbl&gt;,
-## #   act_reading_score &lt;dbl&gt;, act_math_score &lt;dbl&gt;,
-## #   received_high_school_diploma &lt;dbl&gt;, enrolled_in_college &lt;dbl&gt;
 ```
 
 ---
@@ -677,32 +675,15 @@ faketucky
 ## `head`
 
 `head` shows us the first X rows. 
-
-```r
+```{r eval = T, paged.print = F}
 head(faketucky, 5)
-```
-
-```
-## # A tibble: 5 x 12
-##   student_id first_high_scho… school_district  male race_ethnicity
-##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;         
-## 1       1622 Jackson          Jackson             1 Multiple/Nati…
-## 2       1877 Jackson          Jackson             1 White         
-## 3       1941 Jackson          Jackson             1 White         
-## 4       3442 Jackson          Jackson             0 White         
-## 5       4623 Jackson          Jackson             1 White         
-## # … with 7 more variables: free_and_reduced_lunch &lt;dbl&gt;,
-## #   percent_absent &lt;dbl&gt;, gpa &lt;dbl&gt;, act_reading_score &lt;dbl&gt;,
-## #   act_math_score &lt;dbl&gt;, received_high_school_diploma &lt;dbl&gt;,
-## #   enrolled_in_college &lt;dbl&gt;
 ```
 
 ---
 
 ## `head`
 
-
-```r
+```{r}
 head(faketucky, 5)
 ```
 
@@ -715,24 +696,8 @@ The number 5 here is an argument (recall from our discussion of objects and func
 ## `tail`
 
 `tail` shows us the last X rows. 
-
-```r
+```{r eval = T, paged.print = F}
 tail(faketucky, 5)
-```
-
-```
-## # A tibble: 5 x 12
-##   student_id first_high_scho… school_district  male race_ethnicity
-##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;         
-## 1      89364 Lookout Point    Lookout Point       1 Hispanic      
-## 2      94764 Lookout Point    Lookout Point       0 White         
-## 3      97538 Lookout Point    Lookout Point       1 White         
-## 4     101342 Lookout Point    Lookout Point       1 White         
-## 5     104903 Lookout Point    Lookout Point       1 Hispanic      
-## # … with 7 more variables: free_and_reduced_lunch &lt;dbl&gt;,
-## #   percent_absent &lt;dbl&gt;, gpa &lt;dbl&gt;, act_reading_score &lt;dbl&gt;,
-## #   act_math_score &lt;dbl&gt;, received_high_school_diploma &lt;dbl&gt;,
-## #   enrolled_in_college &lt;dbl&gt;
 ```
 
 ---
@@ -741,8 +706,7 @@ tail(faketucky, 5)
 
 `View` (note capital V) opens the RStudio viewer (or click on a data frame in the environment pane).
 
-
-```r
+```{r paged.print = F}
 View(faketucky)
 ```
 
@@ -752,46 +716,18 @@ View(faketucky)
 
 The skimr package provides more detailed information about our data frame. It is also broken up by the type of variable.
 
+```{r eval = F, paged.print = T}
 
-```r
 skim(faketucky)
+
 ```
 
 ---
 
+```{r eval = T, paged.print = F, echo = F}
 
-```
-## Skim summary statistics
-##  n obs: 57855 
-##  n variables: 12 
-## 
-## ── Variable type:character ─────────────────────────────────────────────────────────────────────────────
-##                    variable missing complete     n min max empty n_unique
-##  first_high_school_attended       0    57855 57855   4  14     0      393
-##              race_ethnicity     794    57061 57855   5  24     0        5
-##             school_district       0    57855 57855   4  13     0      171
-## 
-## ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────
-##                      variable missing complete     n     mean       sd p0
-##                act_math_score       0    57855 57855   257.85   420.77  1
-##             act_reading_score       0    57855 57855   258.78   420.65  2
-##           enrolled_in_college       0    57855 57855   255.74   435.54  0
-##        free_and_reduced_lunch       0    57855 57855    15.45   120.82  0
-##                           gpa       0    57855 57855    40.22   189.95  0
-##                          male       0    57855 57855     0.76    15.54  0
-##                percent_absent       0    57855 57855    10.68    46.19  0
-##  received_high_school_diploma       0    57855 57855     0.74     0.44  0
-##                    student_id       0    57855 57855 55922.15 32332.71  1
-##       p25      p50      p75   p100     hist
-##     16       20       33       999 ▇▁▁▁▁▁▁▂
-##     16       22       34       999 ▇▁▁▁▁▁▁▂
-##      0        1      999       999 ▇▁▁▁▁▁▁▃
-##      0        1        1       999 ▇▁▁▁▁▁▁▁
-##      2.02     2.7      3.36    999 ▇▁▁▁▁▁▁▁
-##      0        1        1       999 ▇▁▁▁▁▁▁▁
-##      3.27     6.28    11.35   3153 ▇▁▁▁▁▁▁▁
-##      0        1        1         1 ▃▁▁▁▁▁▁▇
-##  27909.5  56070    83872.5  111990 ▇▇▇▇▇▇▇▇
+skim(faketucky)
+
 ```
 
 ---
@@ -847,13 +783,16 @@ We need to do two things:
 
 To tell R which data is missing, simply add an argument to the `read_csv` function as follows:
 
-
-```r
-faketucky &lt;- read_csv("data/faketucky.csv",
+```{r}
+faketucky <- read_csv("data/faketucky.csv",
                      na = "999")
 ```
 
+```{r eval = T, echo = F}
+faketucky <- read_csv(here("data", "faketucky.csv"),
+                      na = "999")
 
+```
 
 
 ---
@@ -862,9 +801,9 @@ faketucky &lt;- read_csv("data/faketucky.csv",
 
 If we skim our data again, we'll see that there are no longer 999 values. 
 
-
-```r
+```{r}
 skim(faketucky)
+
 ```
 
 ???
@@ -884,8 +823,7 @@ When you run `read_csv` you'll see the following message, which tells you the da
 --
 
 
-
-```r
+```{r}
 Parsed with column specification:
 cols(
   student_id = col_double(),
@@ -934,16 +872,28 @@ cols(
 
 ## Data Types
 
+```{r eval = T, echo = F}
 
-
-
-```r
-faketucky &lt;- read_csv("data/faketucky.csv",
+faketucky <- read_csv(here("data/faketucky.csv"),
                      na = "999",
                      col_types = list(enrolled_in_college = col_character(),
                                       free_and_reduced_lunch = col_character(),
                                       male = col_character(),
                                       received_high_school_diploma = col_character()))
+
+
+```
+
+```{r}
+
+faketucky <- read_csv("data/faketucky.csv",
+                     na = "999",
+                     col_types = list(enrolled_in_college = col_character(),
+                                      free_and_reduced_lunch = col_character(),
+                                      male = col_character(),
+                                      received_high_school_diploma = col_character()))
+
+
 ```
 
 
@@ -968,7 +918,7 @@ class:inverse
 
 class: center, middle, dk-section-title
 
-background-image: url("images/confused.jpeg")
+background-image: url("images/help.jpeg")
 
 # Getting Help
 
@@ -978,9 +928,10 @@ background-image: url("images/confused.jpeg")
 
 Use the ? to get help about anything you're confused about
 
+```{r}
 
-```r
 ?read_csv
+
 ```
 
 ---
@@ -1013,52 +964,5 @@ Use the ? to get help about anything you're confused about
 ## Google
 
 [![](images/programming-google.png)](https://twitter.com/ekaleedmiston/status/1081221822186696706)
-    </textarea>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})();</script>
 
-<script>
-(function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-})();
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>
+

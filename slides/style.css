@@ -38,11 +38,6 @@ a , a > code {
 
 
 
-.remark-slide-content {
-    background-image: url("https://github.com/rfortherestofus/course-assets/raw/master/images/blob.svg");
-    background-size: cover;
-}
-
 
 
 .inverse {
@@ -76,7 +71,7 @@ a , a > code {
     background-image: url("https://raw.githubusercontent.com/rfortherestofus/course-assets/master/images/rru-logo-blue.png");
 }
 
-.inverse:after {
+.inverse:after, .dk-section-title:after {
     content: "";
     position: absolute;
     top: 25px;
@@ -136,4 +131,34 @@ div.dk-footer a {
     color: #f3f3f3;
     opacity: 0.5;
     text-decoration: none;
+}
+
+
+.dk-section-title div.dk-footer {
+    display: none;
+    opacity: 0.5;
+    
+}
+
+.dk-section-title h1 {
+  color: #f3f3f3;
+  font-size: 100px;
+  line-height: 1;
+}
+
+.dk-section-title .remark-slide-number {
+  display: none;
+}
+
+/* Highlight box */
+
+.dk-highlight-box {
+  /* border: 2px #6CABDD solid; */
+  width: 80%;
+  border-radius: 28px;
+  margin: 50px auto;
+  background-color: rgba(108, 171, 221, 0.8);
+  color: #fff;
+  background-color: ;
+  padding: 1px 50px;
 }

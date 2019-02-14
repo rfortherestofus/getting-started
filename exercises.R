@@ -13,10 +13,21 @@
 
 # Import the faketucky data into a data frame called faketucky.
 
-skim(faketucky)
 
 # Examine Data ------------------------------------------------------------
 
+# Enter the name of your data frame (faketucky) and run it as code to see the output.
 
+
+# Use head() to see the first 10 rows of faketucky.
+
+
+# Use tail() to see the first 20 rows of faketucky.
+
+
+# Open faketucky by clicking on it in the environment/history pane or by using the View() function.
+
+
+# Use the skim() function to examine faketucky.
 
 

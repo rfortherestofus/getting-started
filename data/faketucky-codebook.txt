@@ -1,0 +1,189 @@
+---------------------------------------------------------------------------------------------------------------
+This is a modified version of the Faketucky code because I used a selection of variables and renamed them. 
+
+Note that versions of the dataset use for R for the Rest of Us courses will have a different number of values (because, for example, only a single cohort will be included). I have also done some recoding (e.g. making missing values into 999 for) and renaming of variables for teaching purposes.
+
+The original codebook can be found here: https://github.com/OpenSDP/faketucky/blob/master/faketucky_codebook.txt
+
+---------------------------------------------------------------------------------------------------------------
+student_id                                                                   Random Student ID (Synthetic Data)
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (long)
+
+                 range:  [1,111991]                   units:  1
+         unique values:  111,991                  missing .:  0/111,991
+
+                  mean:     55996
+              std. dev:   32329.2
+
+           percentiles:        10%       25%       50%       75%       90%
+                             11200     27998     55996     83994    10079
+
+
+---------------------------------------------------------------------------------------------------------------
+first_hs_name                                                                Name of first high school attended
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  string (str14)
+
+         unique values:  403                      missing "":  0/111,991
+
+              examples:  "Daisy Hill"
+                         "Hawthorne"
+                         "Marlowe"
+                         "Sandy Beach"
+
+               warning:  variable has embedded and trailing blanks
+
+
+---------------------------------------------------------------------------------------------------------------
+school_district                                                  Name of first district attended in high school
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  string (str13)
+
+         unique values:  171                      missing "":  0/111,991
+
+              examples:  "Fletcher"
+                         "Milton North"
+                         "Quigley"
+                         "Snowy Hill"
+
+               warning:  variable has embedded blanks
+
+---------------------------------------------------------------------------------------------------------------
+male                                                                                             Male indicator
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  19/111,991
+
+            tabulation:  Freq.  Value
+                        53,930  0
+                        58,042  1
+                            19  .
+
+---------------------------------------------------------------------------------------------------------------
+race_ethnicity                                                                         Student's race/ethnicity
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  string (str24)
+
+         unique values:  5                        missing "":  1,303/111,991
+
+            tabulation:  Freq.  Value
+                         1,303  ""
+                        13,464  "African-American"
+                         1,548  "Asian/Pacific Islander"
+                         3,742  "Hispanic"
+                         1,903  "Multiple/Native American"
+                        90,031  "White"
+
+               warning:  variable has embedded blanks
+
+---------------------------------------------------------------------------------------------------------------
+free_and_reduced_lunch                         Student ever received free or reduced price lunch in high school
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  1,415/111,991
+
+            tabulation:  Freq.  Value
+                        43,618  0
+                        66,958  1
+                         1,415  .
+
+---------------------------------------------------------------------------------------------------------------
+percent_absent                              Percent of days enrolled in HS the student was absent (not excused)
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (double)
+
+                 range:  [0,3153]                     units:  1.000e-10
+         unique values:  63,869                   missing .:  222/111,991
+
+                  mean:   8.54899
+              std. dev:   12.7716
+
+           percentiles:        10%       25%       50%       75%       90%
+                           1.53061   3.23988   6.18302    11.089   18.2446
+
+---------------------------------------------------------------------------------------------------------------
+gpa                                                                                  GPA throughout high school
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (double)
+
+                 range:  [0,4]                        units:  1.000e-09
+         unique values:  33,479                   missing .:  3,746/111,991
+
+                  mean:   2.62661
+              std. dev:   .854065
+
+           percentiles:        10%       25%       50%       75%       90%
+                            1.4845     2.036    2.6845    3.3048     3.732
+
+
+---------------------------------------------------------------------------------------------------------------
+act_reading_score                                                           Scaled score of highest reading ACT
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [2,36]                       units:  1
+         unique values:  35                       missing .:  25,893/111,991
+
+                  mean:   19.9479
+              std. dev:   6.02919
+
+           percentiles:        10%       25%       50%       75%       90%
+                                12        15        19        24        29
+
+
+---------------------------------------------------------------------------------------------------------------
+act_math_score                                                                 Scaled score of highest math ACT
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [1,36]                       units:  1
+         unique values:  32                       missing .:  25,870/111,991
+
+                  mean:   19.1671
+              std. dev:   4.71455
+
+           percentiles:        10%       25%       50%       75%       90%
+                                15        16        18        22        26
+
+---------------------------------------------------------------------------------------------------------------
+received_hs_diploma                                                        Student received high school diploma
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  0/111,991
+
+            tabulation:  Freq.  Value
+                        26,870  0
+                        85,121  1
+
+---------------------------------------------------------------------------------------------------------------
+enrolled_in_college                           Student was enrolled in any college Oct 1 following HS graduation
+---------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  26,831/111,991
+
+            tabulation:  Freq.  Value
+                        40,718  0
+                        44,442  1
+                        26,831  .
+

@@ -33,7 +33,7 @@ a , a > code {
 }
 
 .hljs-github .hljs-string, .hljs-github .hljs-doctag {
-    color: #19751E
+    color: #19751E;
 }
 
 
@@ -49,6 +49,9 @@ a , a > code {
 .inverse {
   color: #f3f3f3;
 }
+
+
+
 
 .title-slide h3 {
   font-weight: 400;

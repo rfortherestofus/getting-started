@@ -1,5 +1,5 @@
 ---
-title: "Intro to R"
+title: "Getting Started with R"
 author: "R for the Rest of Us"
 output:
   xaringan::moon_reader:
@@ -218,7 +218,9 @@ background-image: url("images/download-course-project.jpeg")
 
 ---
 
-## Download Course Project
+class: inverse
+
+## Your Turn
 
 --
 

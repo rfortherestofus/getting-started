@@ -90,7 +90,8 @@ a , a > code {
 /* Footer */
 
 .remark-slide-number {
-  font-size: 80%;
+  /* font-size: 80%; */
+  display: none;
 }
 
 div.dk-footer {

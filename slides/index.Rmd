@@ -229,7 +229,7 @@ Enter the following into the RStudio console pane:
 ```{r eval = F}
 install.packages("usethis")
 library(usethis)
-use_course("http://bit.ly/intro-to-R")
+use_course("http://bit.ly/getting-started-with-r")
 ```
 
 ???
@@ -251,7 +251,7 @@ opacity: 0.5
 
 ## File Types
 
-There are two main file types that you'll work with: 
+There are **two main file types** that you'll work with: 
 
 .pull-left[
 **R scripts (.R)**
@@ -621,18 +621,6 @@ John Chambers, quoted in [Hadley Wickham's Advanced R](http://adv-r.had.co.nz/Fu
 
 .center[![](images/object-function.png)]
 
---
-
-.pull-left[
-.center[
-Everything that exists is an **object**
-]
-]
-.pull-right[
-.center[
-Everything that happens is a **function** call
-]
-]
 
 
 
@@ -646,7 +634,7 @@ Everything that happens is a **function** call
 
 --
 
-We assign the result of the **function** (`read_csv`) to the **object** (`faketucky`)
+We assign the result of the `read_csv` **function** to the `faketucky` **object**
 ---
 class: center, middle, dk-section-title
 
@@ -667,8 +655,14 @@ There are many ways to look at our data. We'll talk about a few.
 
 ## `faketucky`
 
-If you type the name of your data frame (i.e. `faketucky`), R will output 
-```{r eval = T, paged.print = F}
+If you type the name of your data frame (i.e. `faketucky`), R will output the following: 
+```{r}
+faketucky
+```
+
+--
+
+```{r eval = T, paged.print = F, echo = F}
 faketucky
 ```
 
@@ -677,7 +671,13 @@ faketucky
 ## `head`
 
 `head` shows us the first X rows. 
-```{r eval = T, paged.print = F}
+```{r}
+head(faketucky, 5)
+```
+
+--
+
+```{r eval = T, paged.print = F, echo = F}
 head(faketucky, 5)
 ```
 
@@ -689,8 +689,10 @@ head(faketucky, 5)
 head(faketucky, 5)
 ```
 
+--
+
 .dk-highlight-box[
-The number 5 here is an argument (recall from our discussion of objects and functions).
+`faketucky` and the number 5 here are **arguments**.
 ]
 
 ---
@@ -698,7 +700,13 @@ The number 5 here is an argument (recall from our discussion of objects and func
 ## `tail`
 
 `tail` shows us the last X rows. 
-```{r eval = T, paged.print = F}
+```{r}
+tail(faketucky, 5)
+```
+
+--
+
+```{r eval = T, paged.print = F, echo = F}
 tail(faketucky, 5)
 ```
 
@@ -714,11 +722,21 @@ View(faketucky)
 
 ---
 
+
+
 ## `skimr`
 
 The skimr package provides more detailed information about our data frame. It is also broken up by the type of variable.
 
-```{r eval = F, paged.print = T}
+```{r}
+
+skim(faketucky)
+
+```
+
+--
+
+```{r eval = T, paged.print = F, echo = F}
 
 skim(faketucky)
 
@@ -726,11 +744,23 @@ skim(faketucky)
 
 ---
 
-```{r eval = T, paged.print = F, echo = F}
+class:inverse
 
-skim(faketucky)
+## Your Turn
 
-```
+1. Open the file exercises.R
+
+--
+
+1. Follow the instructions to use the `head()`, `tail()`, `View()`, and `skim()` functions to examine your data.
+
+---
+
+class: center, middle, dk-section-title
+
+background-image: url("images/issues.jpeg")
+
+# We've Got Issues!
 
 ---
 
@@ -750,14 +780,6 @@ Several variables show up as numeric, but we know they're **not actually numeric
 
 ![](images/non-numeric.png)
 
-
----
-class: center, middle, dk-section-title
-
-background-image: url("images/glasses.jpeg")
-
-# Let's Import Our Data Again
-
 ---
 
 ## Let's Import Our Data Again
@@ -772,7 +794,7 @@ We need to do two things:
 
 --
 
-1. Make sure `read_csv` chooses the correct **data type** for each variable
+1. Make sure `read_csv` assigns the correct **data type** to each variable
 
 
 
@@ -783,16 +805,24 @@ We need to do two things:
 
 ## Missing Data
 
+Here's how we imported our data the first time:
+
+```{r}
+faketucky <- read_csv("data/faketucky.csv")
+```
+
+--
+
 To tell R which data is missing, simply add an argument to the `read_csv` function as follows:
 
 ```{r}
 faketucky <- read_csv("data/faketucky.csv",
-                     na = "999")
+                     na = "999") #<<
 ```
 
 ```{r eval = T, echo = F}
 faketucky <- read_csv(here("data", "faketucky.csv"),
-                      na = "999")
+                      na = "999") 
 
 ```
 
@@ -847,13 +877,6 @@ cols(
 
 ## Data Types
 
-- **Logical** (e.g TRUE/FALSE)
-
---
-
-- **Integer** (e.g. 2) 
-
---
 
 - **Double/Numeric** (e.g. 2.5)
 
@@ -861,13 +884,7 @@ cols(
 
 - **Character** (e.g. "Male")
 
---
-
-- **Factor** (used to work with categorical variables)
-
---
-
-.small[There are [other data types in R](https://www.statmethods.net/input/datatypes.html) that we won't discuss in this course.
+.small[There are [many other data types in R](https://www.statmethods.net/input/datatypes.html) that we won't discuss in this course.
 ]
 
 ---
@@ -878,10 +895,10 @@ cols(
 
 faketucky <- read_csv(here("data/faketucky.csv"),
                      na = "999",
-                     col_types = list(enrolled_in_college = col_character(),
-                                      free_and_reduced_lunch = col_character(),
+                     col_types = list(enrolled_in_college = col_character(), 
+                                      free_and_reduced_lunch = col_character(), 
                                       male = col_character(),
-                                      received_high_school_diploma = col_character()))
+                                      received_high_school_diploma = col_character())) 
 
 
 ```
@@ -890,10 +907,10 @@ faketucky <- read_csv(here("data/faketucky.csv"),
 
 faketucky <- read_csv("data/faketucky.csv",
                      na = "999",
-                     col_types = list(enrolled_in_college = col_character(),
-                                      free_and_reduced_lunch = col_character(),
-                                      male = col_character(),
-                                      received_high_school_diploma = col_character()))
+                     col_types = list(enrolled_in_college = col_character(), #<<
+                                      free_and_reduced_lunch = col_character(), #<<
+                                      male = col_character(), #<<
+                                      received_high_school_diploma = col_character())) #<<
 
 
 ```
@@ -909,7 +926,7 @@ class:inverse
 
 ## Your Turn
 
-1. Open the file exercises.R and change the code so that you correctly import the faketucky data frame, telling `read_csv` which data is missing and explicltly defining column types where necessary.
+1. Open the file exercises.R and change the code so that you correctly import the `faketucky` data frame, telling `read_csv` which data is missing and explictly defining column types where necessary.
 
 --
 

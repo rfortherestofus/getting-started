@@ -235,7 +235,7 @@ Enter the following into the RStudio console pane:
 ```r
 install.packages("usethis")
 library(usethis)
-use_course("http://bit.ly/intro-to-R")
+use_course("http://bit.ly/getting-started-with-r")
 ```
 
 ???
@@ -257,7 +257,7 @@ opacity: 0.5
 
 ## File Types
 
-There are two main file types that you'll work with: 
+There are **two main file types** that you'll work with: 
 
 .pull-left[
 **R scripts (.R)**
@@ -622,18 +622,6 @@ John Chambers, quoted in [Hadley Wickham's Advanced R](http://adv-r.had.co.nz/Fu
 
 .center[![](images/object-function.png)]
 
---
-
-.pull-left[
-.center[
-Everything that exists is an **object**
-]
-]
-.pull-right[
-.center[
-Everything that happens is a **function** call
-]
-]
 
 
 
@@ -647,7 +635,7 @@ Everything that happens is a **function** call
 
 --
 
-We assign the result of the **function** (`read_csv`) to the **object** (`faketucky`)
+We assign the result of the `read_csv` **function** to the `faketucky` **object**
 ---
 class: center, middle, dk-section-title
 
@@ -668,11 +656,14 @@ There are many ways to look at our data. We'll talk about a few.
 
 ## `faketucky`
 
-If you type the name of your data frame (i.e. `faketucky`), R will output 
+If you type the name of your data frame (i.e. `faketucky`), R will output the following: 
 
 ```r
 faketucky
 ```
+
+--
+
 
 ```
 ## # A tibble: 57,855 x 12
@@ -704,6 +695,9 @@ faketucky
 head(faketucky, 5)
 ```
 
+--
+
+
 ```
 ## # A tibble: 5 x 12
 ##   student_id first_high_scho… school_district  male race_ethnicity
@@ -728,8 +722,10 @@ head(faketucky, 5)
 head(faketucky, 5)
 ```
 
+--
+
 .dk-highlight-box[
-The number 5 here is an argument (recall from our discussion of objects and functions).
+`faketucky` and the number 5 here are **arguments**.
 ]
 
 ---
@@ -741,6 +737,9 @@ The number 5 here is an argument (recall from our discussion of objects and func
 ```r
 tail(faketucky, 5)
 ```
+
+--
+
 
 ```
 ## # A tibble: 5 x 12
@@ -770,6 +769,8 @@ View(faketucky)
 
 ---
 
+
+
 ## `skimr`
 
 The skimr package provides more detailed information about our data frame. It is also broken up by the type of variable.
@@ -779,7 +780,7 @@ The skimr package provides more detailed information about our data frame. It is
 skim(faketucky)
 ```
 
----
+--
 
 
 ```
@@ -787,13 +788,13 @@ skim(faketucky)
 ##  n obs: 57855 
 ##  n variables: 12 
 ## 
-## ── Variable type:character ─────────────────────────────────────────────────────────────────────
+## ── Variable type:character ──────────────────────────────────────────────────────────────────────────────────────────────────
 ##                    variable missing complete     n min max empty n_unique
 ##  first_high_school_attended       0    57855 57855   4  14     0      393
 ##              race_ethnicity     794    57061 57855   5  24     0        5
 ##             school_district       0    57855 57855   4  13     0      171
 ## 
-## ── Variable type:numeric ───────────────────────────────────────────────────────────────────────
+## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
 ##                      variable missing complete     n     mean       sd p0
 ##                act_math_score       0    57855 57855   257.85   420.77  1
 ##             act_reading_score       0    57855 57855   258.78   420.65  2
@@ -818,6 +819,26 @@ skim(faketucky)
 
 ---
 
+class:inverse
+
+## Your Turn
+
+1. Open the file exercises.R
+
+--
+
+1. Follow the instructions to use the `head()`, `tail()`, `View()`, and `skim()` functions to examine your data.
+
+---
+
+class: center, middle, dk-section-title
+
+background-image: url("images/issues.jpeg")
+
+# We've Got Issues!
+
+---
+
 ## We've Got Issues!
 
 Several variables have max values of 999. This seems suspicious!
@@ -834,14 +855,6 @@ Several variables show up as numeric, but we know they're **not actually numeric
 
 ![](images/non-numeric.png)
 
-
----
-class: center, middle, dk-section-title
-
-background-image: url("images/glasses.jpeg")
-
-# Let's Import Our Data Again
-
 ---
 
 ## Let's Import Our Data Again
@@ -856,7 +869,7 @@ We need to do two things:
 
 --
 
-1. Make sure `read_csv` chooses the correct **data type** for each variable
+1. Make sure `read_csv` assigns the correct **data type** to each variable
 
 
 
@@ -867,12 +880,21 @@ We need to do two things:
 
 ## Missing Data
 
+Here's how we imported our data the first time:
+
+
+```r
+faketucky &lt;- read_csv("data/faketucky.csv")
+```
+
+--
+
 To tell R which data is missing, simply add an argument to the `read_csv` function as follows:
 
 
 ```r
 faketucky &lt;- read_csv("data/faketucky.csv",
-                     na = "999")
+*                    na = "999")
 ```
 
 
@@ -929,13 +951,6 @@ cols(
 
 ## Data Types
 
-- **Logical** (e.g TRUE/FALSE)
-
---
-
-- **Integer** (e.g. 2) 
-
---
 
 - **Double/Numeric** (e.g. 2.5)
 
@@ -943,13 +958,7 @@ cols(
 
 - **Character** (e.g. "Male")
 
---
-
-- **Factor** (used to work with categorical variables)
-
---
-
-.small[There are [other data types in R](https://www.statmethods.net/input/datatypes.html) that we won't discuss in this course.
+.small[There are [many other data types in R](https://www.statmethods.net/input/datatypes.html) that we won't discuss in this course.
 ]
 
 ---
@@ -962,10 +971,10 @@ cols(
 ```r
 faketucky &lt;- read_csv("data/faketucky.csv",
                      na = "999",
-                     col_types = list(enrolled_in_college = col_character(),
-                                      free_and_reduced_lunch = col_character(),
-                                      male = col_character(),
-                                      received_high_school_diploma = col_character()))
+*                    col_types = list(enrolled_in_college = col_character(),
+*                                     free_and_reduced_lunch = col_character(),
+*                                     male = col_character(),
+*                                     received_high_school_diploma = col_character()))
 ```
 
 
@@ -979,7 +988,7 @@ class:inverse
 
 ## Your Turn
 
-1. Open the file exercises.R and change the code so that you correctly import the faketucky data frame, telling `read_csv` which data is missing and explicltly defining column types where necessary.
+1. Open the file exercises.R and change the code so that you correctly import the `faketucky` data frame, telling `read_csv` which data is missing and explictly defining column types where necessary.
 
 --
 
@@ -1036,6 +1045,7 @@ Use the ? to get help about anything you're confused about
 
 [![](images/programming-google.png)](https://twitter.com/ekaleedmiston/status/1081221822186696706)
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
@@ -1046,16 +1056,57 @@ Use the ? to get help about anything you're confused about
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
 <script>
 (function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
@@ -1069,7 +1120,8 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     i++;
   }
-})();
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

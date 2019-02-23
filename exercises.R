@@ -22,7 +22,7 @@
 # Use head() to see the first 10 rows of faketucky.
 
 
-# Use tail() to see the first 20 rows of faketucky.
+# Use tail() to see the last 20 rows of faketucky.
 
 
 # Open faketucky by clicking on it in the environment/history pane or by using the View() function.

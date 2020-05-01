@@ -13,7 +13,6 @@
 
 # Import the faketucky data into a data frame called faketucky.
 
-
 # Examine Data ------------------------------------------------------------
 
 # Enter the name of your data frame (faketucky) and run it as code to see the output.
@@ -31,3 +30,4 @@
 # Use the skim() function to examine faketucky.
 
 
+skim(mtcars)

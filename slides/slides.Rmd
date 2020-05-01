@@ -44,7 +44,7 @@ background-image: url("images/installation.jpeg")
 
 ## Install R
 
-The first thing you need to do is download the R software. Go to the [Comprehensive R Archive Network (aka “CRAN”) website](https://cran.cnr.berkeley.edu/) and download the software for your operating system (Windows, Mac, or Linux).
+The first thing you need to do is download the R software. Go to the [Comprehensive R Archive Network (aka “CRAN”) website](https://cran.r-project.org/) and download the software for your operating system (Windows, Mac, or Linux).
 
 ![](images/download-r.png)
 

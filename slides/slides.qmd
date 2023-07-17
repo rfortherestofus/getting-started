@@ -3,7 +3,7 @@ title: Getting Started with R
 format:
   rfortherestofus-slides-revealjs:
     menu: false
-    progress: true
+    progress: false
     slide-number: true
     show-slide-number: print
     center: true
@@ -24,7 +24,7 @@ title-slide-attributes:
 ## Your Turn {.your-turn}
 
 - [Download and install R](https://posit.co/download/rstudio-desktop/)
-- Use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
+- Open R and use any mathematical operators (+, -, /, and *) to create an expression and make sure it works as expected
 
 # Install RStudio {.inverse}
 
@@ -50,7 +50,7 @@ title-slide-attributes:
 ```{r eval = FALSE, echo = TRUE}
 install.packages(pkgs = "usethis")
 library(package = usethis)
-use_course(url = "http://bit.ly/getting-started-with-r")
+use_course(url = "https://rfor.us/getting-started-materials")
 ```
 
 - Open the project and look at the files within it

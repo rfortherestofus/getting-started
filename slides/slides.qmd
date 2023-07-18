@@ -41,6 +41,12 @@ title-slide-attributes:
 
 # RStudio Projects {.inverse}
 
+## Bring all files together in one place
+
+## Allow us to use relative file paths
+
+
+
 ## Your Turn {.your-turn}
 
 - Download the course project
@@ -48,9 +54,9 @@ title-slide-attributes:
 . . .
 
 ```{r eval = FALSE, echo = TRUE}
-install.packages(pkgs = "usethis")
-library(package = usethis)
-use_course(url = "https://rfor.us/getting-started-materials")
+install.packages("usethis")
+library(usethis)
+use_course("https://rfor.us/getting-started-materials")
 ```
 
 - Open the project and look at the files within it
@@ -63,6 +69,22 @@ use_course(url = "https://rfor.us/getting-started-materials")
 - Check in the Packages tab on the bottom right panel to confirm that the `tidyverse` package has been installed successfully
 
 # Import Data {.inverse}
+
+::: {.notes}
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+penguins %>% 
+  mutate(bill_length_mm = replace_na(bill_length_mm, -999)) %>% 
+  mutate(bill_depth_mm = replace_na(bill_depth_mm, -999)) %>% 
+  mutate(flipper_length_mm = replace_na(flipper_length_mm, -999)) %>% 
+  mutate(body_mass_g = replace_na(body_mass_g, -999)) %>% 
+  mutate(sex_v2 = as.numeric(sex)) %>% 
+  mutate(sex_v2 = replace_na(sex_v2, -999)) %>% 
+  write_csv("penguins_data.csv")
+```
+:::
 
 ## Your Turn {.your-turn}
 
@@ -78,6 +100,10 @@ use_course(url = "https://rfor.us/getting-started-materials")
 # Examine Data {.inverse}
 
 - Examine data with one of three packages I suggest
+
+::: {.notes}
+https://twitter.com/Cghlewis/status/1661716943399800835
+:::
 
 ## Your Turn {.your-turn}
 

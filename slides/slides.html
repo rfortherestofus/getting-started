@@ -494,13 +494,14 @@
 <section id="your-turn-5" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ul>
+<li class="fragment">Create a new R script file and save it as <code>import.R</code></li>
 <li class="fragment">Add the line <code>library(tidyverse)</code> at the top of your R script file and run it to load the <code>tidyverse</code></li>
-<li class="fragment">Use the <code>read_csv()</code> function (not <code>read.csv()</code>) to import the <code>penguins.csv</code> file</li>
+<li class="fragment">Use the <code>read_csv()</code> function (not <code>read.csv()</code>) to import the <code>penguins_data.csv</code> file</li>
 </ul>
 </section></section>
 <section>
-<section id="objects-and-functions" class="title-slide slide level1 inverse center">
-<h1>Objects and Functions</h1>
+<section id="objects-functions-and-the-assignment-operator" class="title-slide slide level1 inverse center">
+<h1>Objects, Functions, and the Assignment Operator</h1>
 
 </section>
 <section id="your-turn-6" class="slide level2 your-turn center">
@@ -512,35 +513,38 @@
 <section>
 <section id="examine-data" class="title-slide slide level1 inverse center">
 <h1>Examine Data</h1>
-<ul>
-<li class="fragment">Examine data with one of three packages I suggest</li>
-</ul>
-<aside class="notes">
-<p>https://twitter.com/Cghlewis/status/1661716943399800835</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+
 </section>
 <section id="your-turn-7" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
+<ul>
+<li class="fragment"><p>Take a look at your data in the following ways:</p></li>
+<li class="fragment"><p>In the console by typing <code>penguins_data</code></p></li>
+<li class="fragment"><p>Using the <code>glimpse()</code> function</p></li>
+<li class="fragment"><p>With the RStudio viewer (or using the <code>view()</code> function)</p></li>
+</ul>
+</section>
+<section id="your-turn-8" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ul>
+<li class="fragment">With one of the functions I showed from the packages I demonstrated:</li>
+<li class="fragment"><code>skim()</code> from the <code>skimr</code> package</li>
+<li class="fragment"><code>tbl_summary()</code> from the <code>gtsummary</code> package</li>
+<li class="fragment"><code>makeDataReport()</code> from the <code>dataReporter</code> package</li>
+<li class="fragment"><code>scan_data()</code> from the <code>pointblank</code> package</li>
+</ul>
 </section></section>
 <section>
 <section id="import-data-again" class="title-slide slide level1 inverse center">
 <h1>Import Data Again</h1>
 
 </section>
-<section id="your-turn-8" class="slide level2 your-turn center">
+<section id="your-turn-9" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <ul>
-<li class="fragment">Reimport data</li>
+<li class="fragment">Adjust your <code>read_csv()</code> code so that you import the data again</li>
+<li class="fragment">Use the <code>na</code> argument to tell <code>read_csv()</code> what should be treated as missing</li>
+<li class="fragment">Use the <code>col_types</code> argument to make sure that <code>sex_v2</code> gets imported as character data</li>
 </ul>
 </section></section>
 <section>
@@ -548,7 +552,15 @@
 <h1>Getting Help</h1>
 
 </section>
-<section id="your-turn-9" class="slide level2 your-turn center">
+<section id="getting-help-1" class="slide level2 center">
+<h2>Getting Help</h2>
+<ol type="1">
+<li class="fragment">Help files</li>
+<li class="fragment">Package websites</li>
+<li class="fragment">Google</li>
+</ol>
+</section>
+<section id="your-turn-10" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 </section></section>
 <section>
@@ -556,7 +568,7 @@
 <h1>Wrapping Up</h1>
 
 </section>
-<section id="your-turn-10" class="slide level2 your-turn center">
+<section id="your-turn-11" class="slide level2 your-turn center">
 <h2>Your Turn</h2>
 <div class="footer footer-default">
 

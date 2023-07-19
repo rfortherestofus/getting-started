@@ -88,10 +88,11 @@ penguins %>%
 
 ## Your Turn {.your-turn}
 
+- Create a new R script file and save it as `import.R`
 - Add the line `library(tidyverse)` at the top of your R script file and run it to load the `tidyverse`
-- Use the `read_csv()` function (not `read.csv()`) to import the `penguins.csv` file
+- Use the `read_csv()` function (not `read.csv()`) to import the `penguins_data.csv` file
 
-# Objects and Functions {.inverse}
+# Objects, Functions, and the Assignment Operator {.inverse}
 
 ## Your Turn {.your-turn}
 
@@ -99,21 +100,37 @@ penguins %>%
 
 # Examine Data {.inverse}
 
-- Examine data with one of three packages I suggest
+## Your Turn {.your-turn}
 
-::: {.notes}
-https://twitter.com/Cghlewis/status/1661716943399800835
-:::
+- Take a look at your data in the following ways: 
+
+- In the console by typing `penguins_data`
+- Using the `glimpse()` function
+- With the RStudio viewer (or using the `view()` function)
 
 ## Your Turn {.your-turn}
+
+- With one of the functions I showed from the packages I demonstrated:
+- `skim()` from the `skimr` package
+- `tbl_summary()` from the `gtsummary` package
+- `makeDataReport()` from the `dataReporter` package
+- `scan_data()` from the `pointblank` package
 
 # Import Data Again {.inverse}
 
 ## Your Turn {.your-turn}
 
-- Reimport data
+- Adjust your `read_csv()` code so that you import the data again
+- Use the `na` argument to tell `read_csv()` what should be treated as missing
+- Use the `col_types` argument to make sure that `sex_v2` gets imported as character data
 
 # Getting Help {.inverse}
+
+## Getting Help
+
+1. Help files
+1. Package websites
+1. Google
 
 ## Your Turn {.your-turn}
 

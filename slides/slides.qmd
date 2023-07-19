@@ -132,6 +132,16 @@ penguins %>%
 1. Package websites
 1. Google
 
+## Googling Effectively
+
+1. Include a function name
+1. Include a package name
+1. Include R
+
+---
+
+![](assets/programming-google.png)
+
 ## Your Turn {.your-turn}
 
 # Wrapping Up {.inverse}
